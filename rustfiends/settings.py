@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = [os.getenv('HOSTNAME')]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # custom
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'rustfiends.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +139,8 @@ MEDIA_URL = '/media/'
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
