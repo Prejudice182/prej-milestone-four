@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import VIPSlot, Kit
+from .models import Category, Product
 # Register your models here.
 
-admin.site.register(VIPSlot)
-admin.site.register(Kit)
+admin.site.register(Category)
+admin.site.register(Product)
