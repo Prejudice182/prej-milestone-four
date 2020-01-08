@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # custom
     'users',
     'products',
+    'cart',
 ]
 
 MIDDLEWARE = [
