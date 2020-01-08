@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Product View - {{ product.title }}{% endblock %}
+
+{% block content %}
+    <p>Title: {{ product.title }}</p>
+    <p>Description: {{ product.description | linebreaks }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Available To: {% for slot in product.allowed_vips.all %}{{ slot }},{% endfor %}</p>
+    <p>Image: <img src="{{ product.image.url }}" alt="Image for {{ product.title }}"></p>
+{% endblock %}

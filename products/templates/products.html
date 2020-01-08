@@ -4,8 +4,14 @@
 
 {% block content %}
 {% for kit in kits %}
-    {{ kit }}
+    <a href="{% url 'product_detail' 'kit' kit.slug %}">{{ kit }}</a>
 {% empty %}
     <h4>No kits available at this time!</h4>
+{% endfor %}
+<hr>
+{% for vipslot in vipslots %}
+    <a href="{% url 'product_detail' 'vip' vipslot.slug %}">{{ vipslot }}</a>
+{% empty %}
+    <h4>No VIP Slots available at this time!</h4>
 {% endfor %}
 {% endblock %}
