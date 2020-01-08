@@ -21,6 +21,7 @@ class Kit(models.Model):
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False, default=5)
     allowed_vips = models.ManyToManyField(VIPSlot)
+    image = models.ImageField(upload_to='images', default='', blank=True)
 
     def __str__(self):
         return self.title

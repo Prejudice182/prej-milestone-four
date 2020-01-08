@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+{% for kit in kits %}
+    {{ kit }}
+{% empty %}
+    <h4>No kits available at this time!</h4>
+{% endfor %}
+{% endblock %}
