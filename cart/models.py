@@ -5,6 +5,8 @@ from products.models import Product
 User = get_user_model()
 
 # Create your models here.
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)

@@ -21,7 +21,13 @@
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ cart.item.name }}</td>
-                <td>{{ cart.quantity }}</td>
+                <td>
+                    <a class="mr-2" href="{% url 'cart:decrease_cart' cart.item.slug %}"><span
+                            class="badge badge-light"><i class="fas fa-minus"></i></span></a>
+                    {{ cart.quantity }}
+                    <a class="mr-2" href="{% url 'cart:add_cart' cart.item.slug %}"><span class="badge badge-light"><i
+                                class="fas fa-plus"></i></span></a>
+                </td>
                 <td>{{ cart.get_total }}</td>
             </tr>
             {% endfor %}
@@ -33,7 +39,7 @@
             <tr>
                 <th scope="row"></th>
                 <td colspan="3" class="text-right">
-                    <button class="btn btn-warning mr-4">Continue Shopping</button>
+                    <a class="btn btn-warning mr-4" href="{% url 'products:home' %}">Continue Shopping</a>
                     <button class="btn btn-success mr-4">Proceed to Checkout</button>
                 </td>
             </tr>
