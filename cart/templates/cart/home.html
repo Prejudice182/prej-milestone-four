@@ -22,10 +22,10 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ cart.item.name }}</td>
                 <td>
-                    <a class="mr-2" href="{% url 'cart:decrease_cart' cart.item.slug %}"><span
+                    <a class="mr-2" href="{% url 'cart:decrease' cart.item.slug %}"><span
                             class="badge badge-light"><i class="fas fa-minus"></i></span></a>
                     {{ cart.quantity }}
-                    <a class="mr-2" href="{% url 'cart:add_cart' cart.item.slug %}"><span class="badge badge-light"><i
+                    <a class="mr-2" href="{% url 'cart:add' cart.item.slug %}"><span class="badge badge-light"><i
                                 class="fas fa-plus"></i></span></a>
                 </td>
                 <td>{{ cart.get_total }}</td>

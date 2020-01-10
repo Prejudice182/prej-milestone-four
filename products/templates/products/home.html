@@ -14,8 +14,8 @@
                     <p class="card-text">{{ product.preview_text }}</p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{% url 'cart:add_cart' product.slug %}" class="btn btn-success">Add to Cart</a>
-                    <a href="{% url 'cart:remove_cart' product.slug %}" class="btn btn-danger">Remove from Cart</a>
+                    <a href="{% url 'cart:add' product.slug %}" class="btn btn-success">Add to Cart</a>
+                    <a href="{% url 'cart:remove' product.slug %}" class="btn btn-danger">Remove from Cart</a>
                 </div>
             </div>
         </div>
