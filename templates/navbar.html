@@ -19,15 +19,29 @@
                 <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
             </li>
             {% endif %}
-            {% if user.is_authenticated %}
+        </ul>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cart:home' %}">
                     <i class="fa fa-shopping-cart"></i> Cart
                     <span class="badge badge-success">{{ user | cart_total }}</span>
                 </a>
             </li>
-            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
         </ul>
+        {% else %}
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            </li>
+        </ul>
+        {% endif %}
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
