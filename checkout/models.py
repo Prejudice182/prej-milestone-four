@@ -8,10 +8,10 @@ User = get_user_model()
 
 class BillingAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    street_address1 = models.CharField(max_length=200)
-    street_address2 = models.CharField(max_length=200, blank=True)
-    town_or_city = models.CharField(max_length=50)
-    county_or_state = models.CharField(max_length=50, blank=True)
+    street_address1 = models.CharField(max_length=200, verbose_name='Address Line 1')
+    street_address2 = models.CharField(max_length=200, blank=True, verbose_name='Address Line 2')
+    town_or_city = models.CharField(max_length=50, verbose_name='Town / City')
+    county_or_state = models.CharField(max_length=50, blank=True, verbose_name='County / State')
     country = models.CharField(max_length=50)
     postcode = models.CharField(max_length=10, blank=True)
 
