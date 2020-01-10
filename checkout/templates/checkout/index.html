@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-3">Shipping Address > <span class="text-muted">Checkout</span></h2>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {{ form | crispy }}
+                        <button type="submit" class="btn btn-primary float-right">Next</button>
+                    </form>
+                </div>
+            </div>
+            {% if saved_address %}
+            <h4>Saved Address</h4>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <p><b>Address Line 1:</b> {{ saved_address.street_address1 }}</p>
+                    {% if saved_address.street_address2 %}
+                    <p><b>Address Line 2:</b> {{ saved_address.street_address2 }}</p>
+                    {% endif %}
+                    <p><b>Town / City:</b> {{ saved_address.town_or_city }}</p>
+                    {% if saved_address.county_or_state %}
+                    <p><b>County / State:</b> {{ saved_address.county_or_state }}</p>
+                    {% endif %}
+                    <p><b>Country:</b> {{ saved_address.country }}</p>
+                    {% if saved_address.postcode %}
+                    <p><b>Postcode:</b> {{ saved_address.postcode }}</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'checkout:payment' %}" class="btn btn-primary float-right">Proceed to Checkout with saved address</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">Order Items</div>
+            </div>
+            <div class="card-footer">
+                <span class="font-weight-bold">Order Total</span>
+                <span class="float-right">€ {{ order_total }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
