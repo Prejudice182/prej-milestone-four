@@ -13,8 +13,9 @@
 </head>
 
 <body>
+    {% include 'navbar.html' %}
     <main>
-        {% include 'navbar.html' %}
+        {% include 'messages.html' %}
         {% block content %}
         {% endblock %}
     </main>
