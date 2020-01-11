@@ -17,30 +17,30 @@
             </tr>
         </thead>
         <tbody>
-            {% for cart in carts %}
+            {% for cart_item in cart_items %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ cart.item.name }}</td>
+                <td>{{ cart_item.product.name }}</td>
                 <td>
-                    <a class="mr-2" href="{% url 'cart:decrease' cart.item.slug %}"><span
+                    <a class="mr-2" href="{% url 'cart:decrease' cart_item.product.slug %}"><span
                             class="badge badge-light"><i class="fas fa-minus"></i></span></a>
-                    {{ cart.quantity }}
-                    <a class="mr-2" href="{% url 'cart:add' cart.item.slug %}"><span class="badge badge-light"><i
+                    {{ cart_item.quantity }}
+                    <a class="mr-2" href="{% url 'cart:add' cart_item.product.slug %}"><span class="badge badge-light"><i
                                 class="fas fa-plus"></i></span></a>
                 </td>
-                <td>{{ cart.get_total }}</td>
+                <td>{{ cart_item.get_total }}</td>
             </tr>
             {% endfor %}
             <tr>
                 <th scope="row"></th>
                 <td colspan="2">Total</td>
-                <td>{{ order.get_totals }}</td>
+                <td>{{ cart.get_total }}</td>
             </tr>
             <tr>
                 <th scope="row"></th>
                 <td colspan="3" class="text-right">
                     <a class="btn btn-warning mr-4" href="{% url 'products:home' %}">Continue Shopping</a>
-                    <a class="btn btn-success mr-4" href="{% url 'checkout:index' %}">Proceed to Checkout</a>
+                    <a class="btn btn-success mr-4" href="{% url 'checkout:home' %}">Proceed to Checkout</a>
                 </td>
             </tr>
         </tbody>

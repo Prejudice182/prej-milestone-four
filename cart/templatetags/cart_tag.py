@@ -1,14 +1,16 @@
 from django import template
-from cart.models import Order
+from cart.models import Cart, CartItem
 
 register = template.Library()
 
 
 @register.filter
 def cart_total(user):
-    order = Order.objects.filter(user=user, ordered=False)
-
-    if order.exists():
-        return order.first().orderitems.count()
+    cart = Cart.objects.filter(customer=user, ordered=False)
+    
+    if cart.exists():
+        cart_items = CartItem.objects.filter(cart=cart.first())
+        if cart_items.exists():
+            return cart_items.count()
     else:
         return 0

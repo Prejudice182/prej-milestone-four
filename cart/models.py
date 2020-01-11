@@ -6,32 +6,30 @@ User = get_user_model()
 
 # Create your models here.
 
-
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    item = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.SmallIntegerField(default=1)
-    created = models.DateTimeField(auto_now_add=True)
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    updated = models.DateTimeField(auto_now=True)
+    quantity = models.PositiveSmallIntegerField(default=1)
 
     def __str__(self):
-        return f'{self.quantity} of {self.item.name}'
+        return f'{self.quantity} of {self.product.name}'
 
     def get_total(self):
-        return self.item.price * self.quantity
+        return self.product.price * self.quantity
 
 
-class Order(models.Model):
-    orderitems = models.ManyToManyField(Cart)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    ordered = models.BooleanField(default=False)
+class Cart(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customer')
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    ordered = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.username
+        return f'{self.pk}' if self.pk else '(unsaved)'
 
-    def get_totals(self):
+    def get_total(self):
         total = 0
-        for order_item in self.orderitems.all():
-            total += order_item.get_total()
-
+        for cart_item in self.items.all():
+            total += cart_item.get_total()
         return total
