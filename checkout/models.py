@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from cart.models import CartItem
 
 User = get_user_model()
 
@@ -20,3 +21,15 @@ class BillingAddress(models.Model):
 
     class Meta:
         verbose_name_plural = 'Billing Addresses'
+
+class Order(models.Model):
+    order_items = models.ManyToManyField(CartItem)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_id = models.CharField(max_length=200, blank=True, null=True)
+    order_id = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+

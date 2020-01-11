@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Charge Page{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2>Thank you for your order!</h2>
+    <a href="{% url 'checkout:all_orders' %}">My Orders</a>
+</div>
+{% endblock%}
