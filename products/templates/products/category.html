@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Products - {{ category.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for product in page_obj %}
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.preview_text }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'cart:add' product.slug %}" class="btn btn-success">Add to Cart</a>
+                    <a href="{% url 'cart:remove' product.slug %}" class="btn btn-danger">Remove from Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <div class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
