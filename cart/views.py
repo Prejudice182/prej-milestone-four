@@ -8,7 +8,8 @@ from products.models import Product
 
 def add_to_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    cart, created = Cart.objects.get_or_create(customer=request.user, ordered=False)
+    cart, created = Cart.objects.get_or_create(
+        customer=request.user, ordered=False)
 
     cart_item_qs = CartItem.objects.filter(cart=cart, product=product)
     if cart_item_qs.exists():
@@ -35,9 +36,12 @@ def decrease_cart(request, slug):
             if cart_item.quantity > 1:
                 cart_item.quantity -= 1
                 cart_item.save()
-            else:
+                messages.info(request, f'{product.name} quantity was updated.')
+            elif cart_item_qs.count() == 1:
                 cart_item.delete()
-            messages.info(request, f'{product.name} quantity was updated.')
+                cart.delete()
+                messages.info(request, 'Your cart is now empty.')
+                return redirect('products:home')
         else:
             messages.info(
                 request, f'{product.name} was not found in your cart.')
@@ -59,6 +63,10 @@ def remove_from_cart(request, slug):
             cart_item.delete()
             messages.info(
                 request, f'{product.name} was removed from your cart.')
+            if cart_item_qs.count() == 1:
+                cart.delete()
+                messages.info(request, 'Your cart is now empty.')
+                return redirect('products:home')
         else:
             messages.info(
                 request, f'{product.name} was not found in your cart.')
