@@ -1,8 +1,8 @@
 {% load cart_tag %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Rust Fiends</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavBar"
-        aria-controls="myNavBar" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -10,6 +10,18 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    {% for category in categories %}
+                    <a class="dropdown-item" href="{% url 'products:category' category.slug %}">{{ category.title }}</a>
+                    {% endfor %}
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'products:home' %}">Products</a>
