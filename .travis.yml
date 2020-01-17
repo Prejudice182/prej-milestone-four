@@ -7,6 +7,7 @@ script:
 deploy:
   provider: heroku
   app: rustfiends
-  run: "python manage.py migrate"
+  run: 
+    - "python manage.py loaddata data.json"
   api_key:
     secure: JbDE8Ngdeeel0KNrzH+Osu+j7P56ziV8X61ZcziWHTRZalBRKW3SM4TbJKTK56jOF71599jYf24EAYB9j8OX+LQ6JeTanzOsxgBKvHnqOrF8eARnXkLU+LttXD8cFixmAGja1gBxcGdZuWNu8JA38JDATP8+n9smiOIOLGGqylZGk69/JmXTWzJJ951EPMkSWG4DeF1d3Pet0XDsfAOPsm+KXDKWehbMPHIR7QnVMhQSNbSjGnXIFzrMUYeIU0TG7AbhYa4Am6d9pXwBlKeaa4XUXlEO6Ja1l3m3baaUcFbEWKsFqMWhTIPXqPM5KqONU7mc4C4exy90rhDHymslzK/vpVXd45a/PNZFSr6VMn3jjLJWgpHsWCkEPCgLs1jNVN9ps43SlipC+cAmjiQ9v0TS0AlU0/tgUyOIantsYnVaV58vRKxSK44IdJtaktlRp8KoAluOLAM47f+BaslxYa48In9oE5ry6MFbbw8vgInbJlx0O3QRf3DNLJy9tG1dCv29Cu3smN9d+2dKqonZ45gleINp3eVqLIhaSZKOL95GpyqQGsusfPMLKHB91hZ29ejuEra6s9YrkDiI6hY4C8PrE8FDHvU1FwuJM2RYTDB3HlNYqUmPdPgpzGYuIES8T3NswTsGR4GmYed2qApHclzb2+zyp3DPXxYpAQEi9To=
