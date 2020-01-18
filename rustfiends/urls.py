@@ -30,6 +30,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('pages/', include('pages.urls', namespace='pages')),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += staticfiles_urlpatterns()
