@@ -3,12 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    <p><a href="{% url 'logout' %}">Logout</a></p>
-{% else %}
-    <p>You are not logged in!</p>
-    <a href="{% url 'login' %}">Login</a> |
-    <a href="{% url 'signup' %}">Signup</a>
-{% endif %}
+<div class="jumbotron jumbotron-fluid">
+</div>
+<div class="container text-center">
+    <h1 class="display-4">Rust Fiends</h1>
+    <p class="h4">From hazzies to eokas, we've got it all!</p>
+    <p class="mt-4">Here at Rust Fiends, we are looking to get you kitted out, as fast as possible.</p>
+    <p>If you are looking for primitive items to tide you over, you'll find them here.</p>
+    <p>Looking to take on oil-rig, get your full metal set and AK here.</p>
+    <a href="#" class="btn btn-danger">Find Out More</a>
+</div>
 {% endblock %}
