@@ -148,7 +148,7 @@ if not DEBUG:
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
     STATIC_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
     STATICFILES_STORAGE = 'rustfiends.storage_backends.StaticStorage'
     MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}'
