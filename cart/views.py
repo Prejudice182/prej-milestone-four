@@ -43,10 +43,10 @@ def decrease_cart(request, slug):
                 messages.info(request, 'Your cart is now empty.')
                 return redirect('products:home')
         else:
-            messages.info(
+            messages.warning(
                 request, f'{product.name} was not found in your cart.')
     else:
-        messages.info(request, 'You do not have anything in your cart.')
+        messages.warning(request, 'You do not have anything in your cart.')
 
     return redirect('cart:home')
 
@@ -68,10 +68,10 @@ def remove_from_cart(request, slug):
                 messages.info(request, 'Your cart is now empty.')
                 return redirect('products:home')
         else:
-            messages.info(
+            messages.warning(
                 request, f'{product.name} was not found in your cart.')
     else:
-        messages.info(request, 'You do not have anything in your cart.')
+        messages.warning(request, 'You do not have anything in your cart.')
 
     return redirect('products:home')
 
