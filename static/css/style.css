@@ -4,6 +4,18 @@
     height: 66vh;
 }
 
+.fas {
+    color: #ce422b;
+    font-size: 8rem;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.75);
+}
+
+.fas + p {
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 @media screen and (max-width: 800px), screen and (max-height: 1400px) {
     .jumbotron {
         background-position: left center;
