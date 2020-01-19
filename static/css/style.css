@@ -18,6 +18,22 @@
 
 @media screen and (max-width: 800px), screen and (max-height: 1400px) {
     .jumbotron {
-        background-position: left center;
+        background-position: left top;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1c1c1c;
+        color: #e6e7e8;
+    }
+
+    img, .jumbotron {
+        opacity: .75;
+        transition: opacity .5s ease-in-out;
+    }
+
+    img:hover, .jumbotron:hover {
+        opacity: 1;
     }
 }
