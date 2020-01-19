@@ -5,12 +5,42 @@
 {% block content %}
 <div class="jumbotron jumbotron-fluid">
 </div>
-<div class="container text-center">
+<div class="container-fluid text-center">
     <h1 class="display-4">Rust Fiends</h1>
     <p class="h4">From hazzies to eokas, we've got it all!</p>
     <p class="mt-4">Here at Rust Fiends, we are looking to get you kitted out, as fast as possible.</p>
     <p>If you are looking for primitive items to tide you over, you'll find them here.</p>
     <p>Looking to take on oil-rig, get your full metal set and AK here.</p>
-    <a href="#" class="btn btn-danger">Find Out More</a>
+    <hr class="w-75 mx-auto my-5">
+    <div class="row w-75 mx-auto">
+        <div class="col-12 col-md-4 mb-4">
+            <i class="fas fa-globe-europe"></i>
+            <p>Global shipping available</p>
+            <p>With the help of shipping partners, we are proud to offer delivery anywhere in the world, but slowly.</p>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <i class="fas fa-check-square"></i>
+            <p>All products guaranteed</p>
+            <p>Our merchandise has been stress tested by seasoned players, ready to be transferred over to you.</p>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+            <i class="fas fa-dollar-sign"></i>
+            <p>Cheapest place for items</p>
+            <p>Using the fastest progression path, we can offer these items at a fraction of the price our competitors can.</p>
+        </div>
+    </div>
+    <hr class="w-75 mx-auto mb-5">
+    <p class="h3">Featured Categories</p>
+    <div class="row w-75 mx-auto">
+        {% for feature in featured %}
+        <div class="col-12 col-md-4">
+            <img src="{{ feature.mainimage.url }}" alt="Image for {{ feature.name }}">
+            <a href="{% url 'products:category' feature.category.slug %}" class="h4 d-block">{{ feature.category.title }}</a>
+        </div>
+        {% empty %}
+        <p>No featured categories at the moment!</p>
+        <p>Please check back later...</p>
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
