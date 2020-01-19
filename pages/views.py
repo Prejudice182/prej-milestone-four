@@ -1,6 +1,5 @@
-from django.db.models import OuterRef, Subquery
 from django.views.generic import ListView
-from products.models import Category, Product
+from products.models import Category
 
 # Create your views here.
 
