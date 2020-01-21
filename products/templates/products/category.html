@@ -4,35 +4,45 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        {% for product in page_obj %}
-        <div class="col-sm-12 col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.preview_text }}</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="{% url 'cart:add' product.slug %}" class="btn btn-success">Add to Cart</a>
-                    <a href="{% url 'cart:remove' product.slug %}" class="btn btn-danger">Remove from Cart</a>
+    <h1 class="mt-5">{{ category.title }}</h4>
+        <div class="row justify-content-center mt-5">
+            {% for product in page_obj %}
+            <div class="col-12 col-md-4 pb-5">
+                <div class="item-card">
+                    <div class="item-img text-center py-3">
+                        <img src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
+                    </div>
+                    <div class="item-name">
+                        <span class="h5">{{ product.name }}</span>
+                        <span class="float-right">€{{ product.price }}</span>
+                    </div>
+                    <div class="item-details text-center">
+                        <a href="#" class="btn btn-sm btn-danger">View Item</a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    <div class="pagination">
-        <div class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-            <span class="current">
-                Page {{ page_obj.number }} of {{ paginator.num_pages }}
-            </span>
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-            {% endif %}
-        </div>
-    </div>
+        {% if is_paginated %}
+        <nav aria-label="{{ category.title }} entries pages">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
 </div>
 {% endblock %}
