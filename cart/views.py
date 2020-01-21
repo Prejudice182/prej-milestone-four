@@ -14,11 +14,18 @@ def add_to_cart(request, slug):
     cart_item_qs = CartItem.objects.filter(cart=cart, product=product)
     if cart_item_qs.exists():
         cart_item = cart_item_qs.first()
-        cart_item.quantity += 1
+        if request.method == 'POST':
+            cart_item.quantity += int(request.POST['quantity'])
+        else:
+            cart_item.quantity += 1
         cart_item.save()
         messages.info(request, 'This item quantity was updated.')
     else:
         cart_item = CartItem.objects.create(cart=cart, product=product)
+        if request.method == 'POST':
+            cart_item.quantity += int(request.POST['quantity'])
+        else:
+            cart_item.quantity += 1
         cart_item.save()
         messages.info(request, 'This item was added to your cart.')
     return redirect('cart:home')
