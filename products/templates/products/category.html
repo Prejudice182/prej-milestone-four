@@ -17,7 +17,7 @@
                         <span class="float-right">€{{ product.price }}</span>
                     </div>
                     <div class="item-details text-center">
-                        <a href="#" class="btn btn-sm btn-danger">View Item</a>
+                        <a href="{% url 'products:detail' product.slug %}" class="btn btn-sm btn-danger">View Item</a>
                     </div>
                 </div>
             </div>
