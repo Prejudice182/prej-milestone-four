@@ -35,7 +35,6 @@ footer {
     color: #385898;
 }
 
-
 .fa-twitch {
     color: #a970ff;
 }
@@ -66,6 +65,18 @@ footer {
 
 .category img {
     width: 50%;
+}
+
+/* Product Page Styles */
+
+.item-img {
+    background: #c5c5c5;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.item-img img {
+    width: 75%;
 }
 
 /* Media Queries */
