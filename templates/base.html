@@ -6,24 +6,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/svg-with-js.min.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Rust Fiends - {% block title %}{% endblock %}</title>
 </head>
+<!-- Body, classes help with sticky footer -->
 
-<body>
-    {% include 'navbar.html' %}
-    <main>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Sticky top header -->
+    <header class="sticky-top">
+        {% include 'navbar.html' %}
+    </header>
+    <!-- Main content -->
+    <main class="flex-shrink-0" role="main">
         {% include 'messages.html' %}
         {% block content %}
         {% endblock %}
     </main>
-    {% include 'footer.html' %}
+    <!-- Sticky footer -->
+    <footer class="mt-auto py-3">
+        {% include 'footer.html' %}
+    </footer>
+    <!-- Bootstrap Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Font Awesome Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+    <!-- Custom Javascript -->
     <script src="{% static 'js/dark-mode.js' %}"></script>
 </body>
 
