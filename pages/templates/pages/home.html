@@ -26,21 +26,29 @@
         <div class="col-12 col-md-4 mb-4">
             <i class="fas fa-dollar-sign fa-8x"></i>
             <p class="icon-heading">Cheapest place for items</p>
-            <p>Using the fastest progression path, we can offer these items at a fraction of the price our competitors can.</p>
+            <p>Using the fastest progression path, we can offer these items at a fraction of the price our competitors
+                can.</p>
         </div>
     </div>
     <hr class="w-75 mx-auto mb-5">
-    <p class="h3">Featured Categories</p>
-    <div class="row w-75 mx-auto">
-        {% for feature in featured %}
-        <div class="col-12 col-md-4">
-            <img src="{{ feature.mainimage.url }}" alt="Image for {{ feature.name }}">
-            <a href="{% url 'products:category' feature.category.slug %}" class="h4 d-block">{{ feature.category.title }}</a>
+    <p class="h3 mb-5">Featured Categories</p>
+    <div class="row w-75 mx-auto mb-5">
+            {% for feature in featured %}
+            <div class="col-12 col-md-4 pb-3">
+                <a href="{% url 'products:category' feature.category.slug %}">
+                    <div class="category py-3">
+                        <img src="{{ feature.mainimage.url }}" alt="Random image from {{ feature.category.title }} collection">
+                        <div class="category-heading">
+                            <h4>{{ feature.category.title }}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <p>No featured categories at the moment!</p>
+            <p>Please check back later...</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <p>No featured categories at the moment!</p>
-        <p>Please check back later...</p>
-    {% endfor %}
     </div>
 </div>
 {% endblock %}
