@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic.detail import SingleObjectMixin
 from .models import Cart, CartItem
 from products.models import Product
 
