@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.detail import SingleObjectMixin
 from .models import Cart, CartItem
 from products.models import Product
 
@@ -23,9 +24,9 @@ def add_to_cart(request, slug):
     else:
         cart_item = CartItem.objects.create(cart=cart, product=product)
         if request.method == 'POST':
-            cart_item.quantity += int(request.POST['quantity'])
+            cart_item.quantity = int(request.POST['quantity'])
         else:
-            cart_item.quantity += 1
+            cart_item.quantity = 1
         cart_item.save()
         messages.info(request, 'This item was added to your cart.')
     return redirect('cart:home')
@@ -37,23 +38,29 @@ def decrease_cart(request, slug):
 
     if cart_qs.exists():
         cart = cart_qs.first()
-        cart_item_qs = CartItem.objects.filter(cart=cart, product=product)
-        if cart_item_qs.exists():
-            cart_item = cart_item_qs.first()
-            if cart_item.quantity > 1:
-                cart_item.quantity -= 1
-                cart_item.save()
-                messages.info(request, f'{product.name} quantity was updated.')
-            elif cart_item_qs.count() == 1:
-                cart_item.delete()
-                cart.delete()
-                messages.info(request, 'Your cart is now empty.')
+        cart_contents_qs = CartItem.objects.filter(cart=cart)
+        if cart_contents_qs.exists():
+            line_count = cart_contents_qs.count()
+            item_qs = cart_contents_qs.filter(product=product)
+            if item_qs.exists():
+                item = item_qs.first()
+                if item.quantity > 1:
+                    item.quantity -= 1
+                    item.save()
+                    messages.info(request, f'{product.name} quantity was decreased by 1.')
+                else:
+                    item.delete()
+                    messages.info(request, f'{product.name} was removed from your cart.')
+                if line_count == 1:
+                    cart.delete()
+                    messages.info(request, 'Your cart is now empty.')
+                    return redirect('products:home')
+            else:
+                messages.warning(request, f'{product.name} was not found in your cart.')
                 return redirect('products:home')
-        else:
-            messages.warning(
-                request, f'{product.name} was not found in your cart.')
     else:
-        messages.warning(request, 'You do not have anything in your cart.')
+        messages.warning(request, 'You do not have an active cart.')
+        return redirect('products:home')
 
     return redirect('cart:home')
 
