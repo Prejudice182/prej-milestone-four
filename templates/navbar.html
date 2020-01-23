@@ -17,13 +17,12 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'products:home' %}">All Products</a>
+                    <div class="dropdown-divider"></div>
                     {% for category in categories %}
                     <a class="dropdown-item" href="{% url 'products:category' category.slug %}">{{ category.title }}</a>
                     {% endfor %}
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'products:home' %}">Products</a>
             </li>
             {% if user.is_superuser %}
             <li class="nav-item">
