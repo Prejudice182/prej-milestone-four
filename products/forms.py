@@ -14,5 +14,5 @@ class OrderByForm(forms.Form):
         ('pk', 'Id: Ascending'),
         ('pkd', 'Id: Descending'),
     ]
-    order = forms.ChoiceField(choices=ORDER_BY_CHOICES, label='Sort Products')
+    order = forms.ChoiceField(choices=ORDER_BY_CHOICES, label='Sort Products', required=False)
     
