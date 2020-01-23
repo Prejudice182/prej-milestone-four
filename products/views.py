@@ -9,6 +9,7 @@ from .models import Product, Category
 
 class Home(ListView):
     model = Product
+    paginate_by = 6
     template_name = 'products/home.html'
 
 
