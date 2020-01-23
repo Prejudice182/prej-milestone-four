@@ -6,17 +6,7 @@ from .models import Product, Category
 
 # Create your views here.
 
-
-class Home(ListView):
-    model = Product
-    paginate_by = 6
-    template_name = 'products/home.html'
-
-
-class CategoryView(SingleObjectMixin, ListView):
-    template_name = 'products/category.html'
-    paginate_by = 6
-    VALID_ORDERS = {
+VALID_ORDERS = {
         'price': 'price',
         'priced': '-price',
         'name': 'name',
@@ -24,20 +14,38 @@ class CategoryView(SingleObjectMixin, ListView):
         'pk': 'pk',
         'pkd': '-pk', 
     }
-    DEFAULT_ORDER = 'pk'
+DEFAULT_ORDER = 'pk'
+
+
+class Home(ListView):
+    paginate_by = 6
+    template_name = 'products/category.html'
+    queryset = Product.objects.all()
 
     def get(self, request, *args, **kwargs):
+        order_key = self.request.GET.get('order', DEFAULT_ORDER)
+        self.order = VALID_ORDERS.get(order_key, DEFAULT_ORDER)
+        return super().get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = OrderByForm(self.request.GET)
+        context['order'] = self.request.GET.get('order', DEFAULT_ORDER)
+        context['category'] = 'All Products'
+        return context
+
+    def get_queryset(self):
+        return self.queryset.order_by(self.order)
+
+
+class CategoryView(SingleObjectMixin, Home):
+    def get(self, request, *args, **kwargs):
         self.object = self.get_object(queryset=Category.objects.all())
-        order_key = self.request.GET.get('order', self.DEFAULT_ORDER)
-        self.order = self.VALID_ORDERS.get(order_key, self.DEFAULT_ORDER)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = OrderByForm()
         context['category'] = self.object
-        context['order'] = self.request.GET.get('order', self.DEFAULT_ORDER)
-        print(context)
         return context
 
     def get_queryset(self):
