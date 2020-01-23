@@ -50,10 +50,10 @@ def decrease_cart(request, slug):
                 else:
                     item.delete()
                     messages.info(request, f'{product.name} was removed from your cart.')
-                if line_count == 1:
-                    cart.delete()
-                    messages.info(request, 'Your cart is now empty.')
-                    return redirect('products:home')
+                    if line_count == 1:
+                        cart.delete()
+                        messages.info(request, 'Your cart is now empty.')
+                        return redirect('products:home')
             else:
                 messages.warning(request, f'{product.name} was not found in your cart.')
                 return redirect('products:home')
