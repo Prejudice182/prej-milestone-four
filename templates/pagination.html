@@ -1,6 +1,7 @@
 <nav aria-label="{{ category.title }} entries pages">
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1&order={{ order }}">First</a></li>
         <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&order={{ order }}">Previous</a></li>
         {% endif %}
 
@@ -14,6 +15,7 @@
 
         {% if page_obj.has_next %}
         <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&order={{ order }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ paginator.num_pages }}&order={{ order }}">Last</a></li>
         {% endif %}
     </ul>
 </nav>
