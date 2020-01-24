@@ -6,13 +6,14 @@
 {% block content %}
 <div class="container">
     <h1 class="mt-5">{{ category.title }}</h1>
-    <form method="GET">
-        {{ form | crispy }}
-        <button type="submit">SORT</button>
-    </form>
-    <div class="row justify-content-center mt-5">
+    <div class="row">
+        <div class="col-12">
+            {% crispy form %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-sm-5">
         {% for product in page_obj %}
-        <div class="col-12 col-md-4 pb-5">
+        <div class="col-12 col-md-4 pb-3">
             <div class="item-card">
                 <div class="item-img text-center py-3">
                     <img src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
