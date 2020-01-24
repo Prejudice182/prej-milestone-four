@@ -7,9 +7,15 @@ a:hover {
 /* Jumbotron Styles */
 
 .jumbotron {
-    color: white;
-    background: url("../images/hero.jpg") center/cover no-repeat;
     height: 66vh;
+}
+
+.main-jumbo {
+    background: url("../images/hero.jpg") center/cover no-repeat;
+}
+
+.shop-jumbo {
+    background: url("../images/cat-hero.png") center/cover no-repeat;
 }
 
 /* Footer Styles */
