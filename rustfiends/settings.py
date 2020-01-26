@@ -168,9 +168,8 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = '/users/login/'
 LOGOUT_REDIRECT_URL = 'home'
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MESSAGE_TAGS = {
