@@ -29,7 +29,7 @@ def dec_or_remove(cart, product, remove=False):
                 item.quantity -= 1
                 item.save()
 
-
+@login_required
 def add_to_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart, created = Cart.objects.get_or_create(
@@ -45,7 +45,7 @@ def add_to_cart(request, slug):
 
     return redirect('cart:home')
 
-
+@login_required
 def decrease_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
@@ -57,7 +57,7 @@ def decrease_cart(request, slug):
 
     return redirect('cart:home')
 
-
+@login_required
 def remove_from_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
@@ -70,7 +70,7 @@ def remove_from_cart(request, slug):
     return redirect('cart:home')
 
 
-@login_required(login_url='/users/login/')
+@login_required
 def cart_view(request):
     user = request.user
 
