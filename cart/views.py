@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem
 from products.models import Product
@@ -46,16 +47,19 @@ def decrease_cart(request, slug):
                 if item.quantity > 1:
                     item.quantity -= 1
                     item.save()
-                    messages.info(request, f'{product.name} quantity was decreased by 1.')
+                    messages.info(
+                        request, f'{product.name} quantity was decreased by 1.')
                 else:
                     item.delete()
-                    messages.info(request, f'{product.name} was removed from your cart.')
+                    messages.info(
+                        request, f'{product.name} was removed from your cart.')
                     if line_count == 1:
                         cart.delete()
                         messages.info(request, 'Your cart is now empty.')
                         return redirect('products:home')
             else:
-                messages.warning(request, f'{product.name} was not found in your cart.')
+                messages.warning(
+                    request, f'{product.name} was not found in your cart.')
                 return redirect('products:home')
     else:
         messages.warning(request, 'You do not have an active cart.')
@@ -89,6 +93,7 @@ def remove_from_cart(request, slug):
     return redirect('products:home')
 
 
+@login_required(login_url='/users/login/')
 def cart_view(request):
     user = request.user
 
