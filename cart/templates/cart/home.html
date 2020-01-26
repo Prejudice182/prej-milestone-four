@@ -14,6 +14,7 @@
                 <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
+                <th scope="col">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                                 class="fas fa-plus"></i></span></a>
                 </td>
                 <td>{{ cart_item.get_total }}</td>
+                <td><a href="{% url 'cart:remove' cart_item.product.slug %}"><span class="badge badge-danger"><i class="fas fa-times"></i></span></a></td>
             </tr>
             {% endfor %}
             <tr>
