@@ -11,12 +11,12 @@ class QuantitySelectForm(forms.Form):
 
 class OrderByForm(forms.Form):
     ORDER_BY_CHOICES = [
+        ('pk', 'Id: Ascending'),
+        ('pkd', 'Id: Descending'),
         ('price', 'Price: Low to High'),
         ('priced', 'Price: High to Low'),
         ('name', 'Name: A to Z'),
         ('named', 'Name: Z to A'),
-        ('pk', 'Id: Ascending'),
-        ('pkd', 'Id: Descending'),
     ]
     order = forms.ChoiceField(choices=ORDER_BY_CHOICES,
                               required=False, label='')

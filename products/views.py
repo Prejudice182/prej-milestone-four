@@ -7,12 +7,12 @@ from .models import Product, Category
 # Create your views here.
 
 VALID_ORDERS = {
+        'pk': 'pk',
+        'pkd': '-pk', 
         'price': 'price',
         'priced': '-price',
         'name': 'name',
         'named': '-name',
-        'pk': 'pk',
-        'pkd': '-pk', 
     }
 DEFAULT_ORDER = 'pk'
 
