@@ -12,5 +12,4 @@ def cart_total(user):
         cart_items = CartItem.objects.filter(cart=cart.first())
         if cart_items.exists():
             return cart_items.count()
-    else:
-        return 0
+    return 0
