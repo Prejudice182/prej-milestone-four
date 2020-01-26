@@ -1,3 +1,17 @@
+/* Font Import */
+
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans&display=swap');
+
+/* Font Declarations */
+
+h1, h2, h3, h4, h5, .icon-heading {
+    font-family: 'Bebas Neue', cursive;
+}
+
+p, span {
+    font-family: 'Open Sans', sans-serif;
+}
+
 /* Anchor Styles */
 
 a:hover {
@@ -73,7 +87,7 @@ footer {
     width: 50%;
 }
 
-/* Product Page Styles */
+/* Image Styles */
 
 .item-img {
     background: #c5c5c5;
@@ -81,8 +95,10 @@ footer {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
-.item-img img {
-    width: 75%;
+/* Required Asterisk Removal */
+
+.asteriskField {
+    display: none;
 }
 
 /* Media Queries */
