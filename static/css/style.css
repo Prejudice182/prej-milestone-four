@@ -4,12 +4,12 @@
 
 /* Font Declarations */
 
-h1, h2, h3, h4, h5, .icon-heading {
-    font-family: 'Bebas Neue', cursive;
+body, p, span, label {
+    font-family: 'Open Sans', sans-serif;
 }
 
-p, span, label {
-    font-family: 'Open Sans', sans-serif;
+h1, h2, h3, h4, h5, .icon-heading {
+    font-family: 'Bebas Neue', cursive;
 }
 
 /* Colours */
@@ -21,10 +21,6 @@ p, span, label {
 .rust-button {
     color: white;
     background-color: #ce422b;
-}
-
-.rust-button:hover {
-    color: #cacaca;
 }
 
 /* Anchor Styles */
@@ -149,6 +145,11 @@ footer {
 
 .remove-button .fa-circle {
     color: red;
+}
+
+.rust-button:hover {
+    color: white;
+    background-color: #a13423;
 }
 
 /* Required Asterisk Removal */
