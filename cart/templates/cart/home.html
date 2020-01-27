@@ -4,48 +4,52 @@
 
 {% block content %}
 <div class="container">
-    <div class="my-5">
-        <h2>Your Cart</h2>
+    <h1 class="my-5">Your Cart</h1>
+    <div class="cart-contents text-center">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="text-left">Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cart_item in cart_items %}
+                <tr>
+                    <th scope="row" class="align-middle">{{ forloop.counter }}</th>
+                    <td scope="row" class="w-25 align-middle">
+                        <div class="cart-img-wrapper item-img">
+                            <img class="img-fluid" src="{{ cart_item.product.mainimage.url }}"
+                                alt="Stock image for {{ cart_item.product.name }}">
+                        </div>
+                    </td>
+                    <td class="align-middle">{{ cart_item.product.name }}</td>
+                    <td class="align-middle">
+                        <a class="mr-2" href="{% url 'cart:decrease' cart_item.product.slug %}"><span
+                                class="badge badge-light"><i class="fas fa-minus"></i></span></a>
+                        {{ cart_item.quantity }}
+                        <a class="mr-2" href="{% url 'cart:add' cart_item.product.slug %}"><span
+                                class="badge badge-light"><i class="fas fa-plus"></i></span></a>
+                    </td>
+                    <td class="align-middle">€{{ cart_item.get_total }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th scope="row"></th>
+                    <td colspan="3" class="text-left align-middle"><h2 class="rust">Total</h2></td>
+                    <td class="align-middle">€{{ cart.get_total }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-3 offset-md-9 text-right pb-3">
+                <a class="btn btn-warning btn-block mr-4" href="{% url 'products:home' %}">Continue Shopping</a>
+                <a class="btn btn-success btn-block mr-4" href="{% url 'checkout:home' %}">Proceed to Checkout</a>
+            </div>
+        </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for cart_item in cart_items %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ cart_item.product.name }}</td>
-                <td>
-                    <a class="mr-2" href="{% url 'cart:decrease' cart_item.product.slug %}"><span
-                            class="badge badge-light"><i class="fas fa-minus"></i></span></a>
-                    {{ cart_item.quantity }}
-                    <a class="mr-2" href="{% url 'cart:add' cart_item.product.slug %}"><span class="badge badge-light"><i
-                                class="fas fa-plus"></i></span></a>
-                </td>
-                <td>{{ cart_item.get_total }}</td>
-                <td><a href="{% url 'cart:remove' cart_item.product.slug %}"><span class="badge badge-danger"><i class="fas fa-times"></i></span></a></td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <th scope="row"></th>
-                <td colspan="2">Total</td>
-                <td>{{ cart.get_total }}</td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td colspan="3" class="text-right">
-                    <a class="btn btn-warning mr-4" href="{% url 'products:home' %}">Continue Shopping</a>
-                    <a class="btn btn-success mr-4" href="{% url 'checkout:home' %}">Proceed to Checkout</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 {% endblock %}
