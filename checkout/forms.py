@@ -28,5 +28,5 @@ class BillingForm(ModelForm):
                 Field('postcode', wrapper_class='col-md-6'),
                 css_class='form-row'
             ),
-            StrictButton('Next', type='submit', css_class='btn-primary float-right')
+            StrictButton('Next', type='submit', css_class='rust-button float-right')
         )
