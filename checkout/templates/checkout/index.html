@@ -28,7 +28,7 @@
                 </div>
             </div>
             {% endif %}
-            <h3>New Address</h3>
+            <h3 class="rust">New Address</h3>
             <div class="card mb-5">
                 <div class="card-body">
                     <form method="post">
@@ -41,7 +41,7 @@
         <div class="col-md-3">
             <h3>&nbsp;</h3>
             <div class="card">
-                <div class="card-header">Order Items</div>
+                <div class="card-header font-weight-bold">Order Items</div>
                 <div class="card-body">
                     {% for item in cart_items %}
                     {{ item.quantity }} x {{ item.product.name }} - {{ item.get_total }}<br />
