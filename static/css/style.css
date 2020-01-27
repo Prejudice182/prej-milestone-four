@@ -23,10 +23,28 @@ p, span, label {
     background-color: #ce422b;
 }
 
+.rust-button:hover {
+    color: #cacaca;
+}
+
 /* Anchor Styles */
 
 a:hover {
     text-decoration: none;
+}
+
+.page-item.active .page-link{
+    background-color: #ce422b;
+    border-color: #ce422b;
+}
+
+.page-item.active .page-link:hover {
+    background-color: #9b2b19;
+    border-color: #9b2b19;
+}
+
+.page-link:hover {
+    color: #9b2b19;
 }
 
 /* Jumbotron Styles */
@@ -100,10 +118,14 @@ footer {
 
 /* Image Styles */
 
-.item-img {
+.item-img, .detail-img {
     background: #c5c5c5;
     border-radius: 8px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.item-img:hover {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* Form Styles */

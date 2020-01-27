@@ -16,18 +16,17 @@
     <div class="row justify-content-center mt-sm-5">
         {% for product in page_obj %}
         <div class="col-12 col-md-4 pb-3">
-            <div class="item-card">
-                <div class="item-img text-center py-3">
-                    <img class="w-75 mx-auto" src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
+            <a href="{% url 'products:detail' product.slug %}">
+                <div class="item-card">
+                    <div class="item-img text-center py-3">
+                        <img class="w-75 mx-auto" src="{{ product.mainimage.url }}" alt="Image for {{ product.name }}">
+                    </div>
+                    <div class="item-name py-3 rust">
+                        <h4 class="d-inline">{{ product.name }}</h4>
+                        <span class="float-right">€{{ product.price }}</span>
+                    </div>
                 </div>
-                <div class="item-name">
-                    <h4 class="d-inline">{{ product.name }}</h4>
-                    <span class="float-right">€{{ product.price }}</span>
-                </div>
-                <div class="item-details text-center">
-                    <a href="{% url 'products:detail' product.slug %}" class="btn btn-sm btn-danger">View Item</a>
-                </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
     </div>
