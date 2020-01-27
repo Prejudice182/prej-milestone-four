@@ -13,16 +13,16 @@
                     alt="Main image of {{ product.mainimage.url }}">
             </div>
             <div class="product-details pt-3">
-                <h3>Description</h3>
+                <h3 class="rust">Description</h3>
                 <p>{{ product.detail_text }}</p>
                 <hr>
-                <h3>Our Promise</h3>
+                <h3 class="rust">Our Promise</h3>
                 <p>Our products are sourced from only the most reputable suppliers, for the best price available. Due to
                     this, we are able to pass any savings back to you, the customer. If you find any of our products
                     available for a better price from any source, drop us an email and we will not only match our rivals
                     price, but discount the difference from any order you subsequently make.</p>
                 <hr>
-                <h3>Remember</h3>
+                <h3 class="rust">Remember</h3>
                 <p>Please use all items responsibly, and try not to harm any newmans with them. Remember, no one likes dying on the beach.</p>
             </div>
             <hr>
@@ -34,7 +34,7 @@
             <form action="{% url 'cart:add' product.slug %}" method="post">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <button class="btn btn-info" type="submit">Add to Cart</button>
+                <button class="btn rust-button" type="submit">Add to Cart</button>
             </form>
         </div>
     </div>
