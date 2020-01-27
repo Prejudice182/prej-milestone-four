@@ -26,5 +26,5 @@ class OrderByForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_class = 'form-inline justify-content-center justify-content-sm-end'
         self.helper.form_method = 'get'
-        self.helper.layout = Layout(FieldWithButtons(
-            'order', StrictButton('Sort', type='submit', css_class='btn-primary')))
+        self.helper.layout = Layout(Field(
+            'order', css_class="mx-2"), StrictButton('Sort', type='submit', css_class='rust-button'))
