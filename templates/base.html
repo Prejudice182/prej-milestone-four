@@ -13,6 +13,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Rust Fiends - {% block title %}{% endblock %}</title>
+    <!-- Stripe needs to be in head -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <!-- Body, classes help with sticky footer -->
 
@@ -39,6 +41,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
     <!-- Custom Javascript -->
     <script src="{% static 'js/dark-mode.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>
