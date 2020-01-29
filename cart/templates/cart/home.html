@@ -37,7 +37,15 @@
                         <a href="{% url 'cart:add' cart_item.product.slug %}"><span
                                 class="badge badge-light"><i class="fas fa-plus"></i></span></a>
                     </td>
-                    <td class="align-middle">€{{ cart_item.get_total }}</td>
+                    <td class="align-middle position-relative">
+                        €{{ cart_item.get_total }}
+                        <a class="btn remove-button" href="{% url 'cart:remove' cart_item.product.slug %}">
+                            <span class="fa-layers fa-fw fa-lg">
+                                <i class="fas fa-circle"></i>
+                                <i class="fa-inverse fas fa-times" data-fa-transform="shrink-6"></i>
+                            </span>
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
                 <tr>

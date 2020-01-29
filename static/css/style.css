@@ -4,11 +4,19 @@
 
 /* Font Declarations */
 
-body, p, span, label {
+body,
+p,
+span,
+label {
     font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, .icon-heading {
+h1,
+h2,
+h3,
+h4,
+h5,
+.icon-heading {
     font-family: 'Bebas Neue', cursive;
 }
 
@@ -24,7 +32,7 @@ a:hover {
     text-decoration: none;
 }
 
-.page-item.active .page-link{
+.page-item.active .page-link {
     background-color: #ce422b;
     border-color: #ce422b;
 }
@@ -111,7 +119,8 @@ footer {
 
 /* Image Styles */
 
-.item-img, .detail-img {
+.item-img,
+.detail-img {
     background: #c5c5c5;
     border-radius: 8px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
@@ -161,12 +170,12 @@ footer {
 
 .remove-button {
     position: absolute;
-    top: 34%;
-    left: 79%;
+    top: 33%;
+    right: 3%;
 }
 
 .remove-button .fa-circle {
-    color: red;
+    color: #ce422b;
 }
 
 /* Required Asterisk Removal */
@@ -177,7 +186,7 @@ footer {
 
 /* Media Queries */
 
-@media screen and (max-width: 800px) {    
+@media screen and (max-width: 800px) {
     .login-jumbo {
         background-position: right center;
     }
