@@ -6,7 +6,9 @@
 <div class="container">
     <h1 class="my-5">Your Cart</h1>
     <div class="cart-contents text-center">
+        <!-- Table to display cart contents -->
         <table class="table table-hover">
+            <!-- Table headings -->
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -17,6 +19,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Cart Items -->
                 {% for cart_item in cart_items %}
                 <tr>
                     <th scope="row" class="align-middle">{{ forloop.counter }}</th>
@@ -44,6 +47,7 @@
                 </tr>
             </tbody>
         </table>
+        <!-- Buttons for proceeding to checkout or back to products -->
         <div class="row">
             <div class="col-md-3 offset-md-9 text-right pb-3">
                 <a class="btn btn-warning btn-block mr-4" href="{% url 'products:home' %}">Continue Shopping</a>

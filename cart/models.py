@@ -6,8 +6,13 @@ User = get_user_model()
 
 # Create your models here.
 
+
 class CartItem(models.Model):
-    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
+    '''
+    Cart item model, with a foreign key to the Cart model
+    '''
+    cart = models.ForeignKey(
+        'Cart', on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
     quantity = models.PositiveSmallIntegerField(default=1)
@@ -20,7 +25,11 @@ class CartItem(models.Model):
 
 
 class Cart(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customer')
+    '''
+    Cart model, with a foreign key to the User model
+    '''
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='customer')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     ordered = models.BooleanField(default=False)
