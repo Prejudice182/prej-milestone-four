@@ -1,7 +1,7 @@
 from django import forms
-from crispy_forms.bootstrap import StrictButton, FieldWithButtons
+from crispy_forms.bootstrap import StrictButton
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Field
+from crispy_forms.layout import Layout, Field, Div
 
 
 class QuantitySelectForm(forms.Form):
@@ -33,5 +33,7 @@ class OrderByForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_class = 'form-inline justify-content-center justify-content-sm-end'
         self.helper.form_method = 'get'
-        self.helper.layout = Layout(Field(
-            'order', css_class="mx-2"), StrictButton('Sort', type='submit', css_class='rust-button'))
+        self.helper.layout = Layout(
+            'order',
+            StrictButton('Sort', type='submit', css_class='rust-button align-self-start ml-1')
+        )
