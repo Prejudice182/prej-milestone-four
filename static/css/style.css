@@ -41,7 +41,7 @@ a:hover {
 /* Jumbotron Styles */
 
 .jumbotron {
-    height: 66vh;
+    min-height: 66vh;
 }
 
 .main-jumbo {
@@ -54,7 +54,7 @@ a:hover {
 
 .login-jumbo {
     background: url("../images/login-hero.png") center/cover no-repeat;
-    height: 85.6vh;
+    min-height: 85.6vh;
     margin-bottom: 0;
 }
 

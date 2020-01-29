@@ -5,18 +5,27 @@
 
 {% block content %}
 <div class="jumbotron jumbotron-fluid login-jumbo">
-</div>
-<div class="container">
-    <h1 class="my-5">Sign Up</h1>
-    <div class="row justify-content-center">
-        <div class="col-6 mb-5">
-            <form method="post">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="text-center">
-                    <button class="btn rust-button" type="submit">Register</button>
+    <!-- Container for inner content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Inner container as content was touching sides of mobile view -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <!-- Login Form -->
+                        <div class="col-12 col-md-6 pb-5 login-form">
+                            <h1 class="my-3">Sign Up</h1>
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form | crispy }}
+                                <div class="text-center">
+                                    <button class="btn rust-button" type="submit">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
