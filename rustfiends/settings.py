@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Category List for Navbar
                 'products.contexts.category_list',
             ],
         },
@@ -163,17 +164,22 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# Stripe keys and URLs
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 STRIPE_SUCCESS_URL = os.getenv('STRIPE_SUCCESS_URL')
 STRIPE_CANCEL_URL = os.getenv('STRIPE_CANCEL_URL')
 
+# User Model
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# Login and Logout urls
 LOGIN_URL = '/users/login/'
 LOGOUT_REDIRECT_URL = 'home'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# Messge tags to set bootstrap classes
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
