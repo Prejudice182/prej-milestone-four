@@ -7,6 +7,7 @@
 <div class="container">
     <h1 class="mt-5 mb-3">{{ product.name }}</h1>
     <div class="row">
+        <!-- Image and description section -->
         <div class="col-12 col-md-8">
             <div class="detail-img text-center">
                 <img class="w-50 mx-auto" src="{{ product.mainimage.url }}"
@@ -27,6 +28,7 @@
             </div>
             <hr>
         </div>
+        <!-- Price and quantity section -->
         <div class="col-12 col-md-4">
             <div class="price-wrapper">
                 €{{ product.price }}
