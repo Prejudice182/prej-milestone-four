@@ -4,6 +4,9 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
+    '''
+    Form class used to create a custom user, inheriting from UserCreationForm
+    '''
     email = forms.EmailField(help_text='Required.')
 
     class Meta:
@@ -12,6 +15,9 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
+    '''
+    Form class used to change details about a custom user, inheriting from UserChangeForm
+    '''
     email = forms.EmailField(help_text='Required.')
 
     class Meta:
