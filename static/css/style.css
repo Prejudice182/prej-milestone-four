@@ -45,11 +45,11 @@ a:hover {
 }
 
 .main-jumbo {
-    background: url("../images/hero.jpg") center/cover no-repeat;
+    background: url("../images/hero.jpg") left top/cover no-repeat;
 }
 
 .shop-jumbo {
-    background: url("../images/cat-hero.png") center/cover no-repeat;
+    background: url("../images/cat-hero.png") 20% 50%/cover no-repeat;
 }
 
 .login-jumbo {
@@ -177,11 +177,7 @@ footer {
 
 /* Media Queries */
 
-@media screen and (max-width: 800px) {
-    .main-jumbo, .shop-jumbo {
-        background-position: left top;
-    }
-
+@media screen and (max-width: 800px) {    
     .login-jumbo {
         background-position: right center;
     }
