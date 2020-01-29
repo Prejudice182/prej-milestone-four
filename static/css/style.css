@@ -54,6 +54,8 @@ a:hover {
 
 .login-jumbo {
     background: url("../images/login-hero.png") center/cover no-repeat;
+    height: 85.6vh;
+    margin-bottom: 0;
 }
 
 /* Footer Styles */
@@ -128,6 +130,11 @@ footer {
 .form-control:focus {
     border-color: #ce422b;
     box-shadow: 0 0 0 .2rem rgba(206, 66, 43, .25);
+}
+
+.login-form {
+    background-color: #f8f9fa;
+    border-radius: 4px;
 }
 
 /* Button Styles */
