@@ -1,10 +1,11 @@
 <nav aria-label="{{ category.title }} entries pages">
     <ul class="pagination justify-content-center">
+        <!-- Show first page and previous page links if available -->
         {% if page_obj.has_previous %}
         <li class="page-item"><a class="page-link rust" href="?page=1&order={{ order }}">First</a></li>
         <li class="page-item"><a class="page-link rust" href="?page={{ page_obj.previous_page_number }}&order={{ order }}">Previous</a></li>
         {% endif %}
-
+        <!-- Get 3 previous and 3 next pages -->
         {% for num in paginator.page_range %}
         {% if page_obj.number == num %}
         <li class="page-item active"><a class="page-link rust" href="?page={{ num }}&order={{ order }}">{{ num }}</a></li>
@@ -12,7 +13,7 @@
         <li class="page-item"><a class="page-link rust" href="?page={{ num }}&order={{ order }}">{{ num }}</a></li>
         {% endif %}
         {% endfor %}
-
+        <!-- Show next and last page links if available -->
         {% if page_obj.has_next %}
         <li class="page-item"><a class="page-link rust" href="?page={{ page_obj.next_page_number }}&order={{ order }}">Next</a></li>
         <li class="page-item"><a class="page-link rust" href="?page={{ paginator.num_pages }}&order={{ order }}">Last</a></li>
