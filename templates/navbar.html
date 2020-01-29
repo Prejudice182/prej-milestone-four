@@ -35,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cart:home' %}">
                     <i class="fa fa-shopping-cart"></i> Cart
-                    <span class="badge badge-success">{{ user | cart_total }}</span>
+                    <span class="badge rust-button">{{ user | cart_total }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -54,7 +54,7 @@
         {% endif %}
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn rust-button-outline my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>

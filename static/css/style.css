@@ -18,11 +18,6 @@ h1, h2, h3, h4, h5, .icon-heading {
     color: #ce422b;
 }
 
-.rust-button {
-    color: white;
-    background-color: #ce422b;
-}
-
 /* Anchor Styles */
 
 a:hover {
@@ -137,6 +132,26 @@ footer {
 
 /* Button Styles */
 
+.rust-button {
+    color: white;
+    background-color: #ce422b;
+}
+
+.rust-button:hover {
+    color: white;
+    background-color: #a13423;
+}
+
+.rust-button-outline {
+    color: #ce422b;
+    border-color: #ce422b;
+}
+
+.rust-button-outline:hover {
+    color: white;
+    background-color: #ce422b;
+}
+
 .remove-button {
     position: absolute;
     top: 34%;
@@ -145,11 +160,6 @@ footer {
 
 .remove-button .fa-circle {
     color: red;
-}
-
-.rust-button:hover {
-    color: white;
-    background-color: #a13423;
 }
 
 /* Required Asterisk Removal */
