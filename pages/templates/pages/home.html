@@ -14,19 +14,19 @@
     <p>If you are looking for primitive items to tide you over, you'll find them here.</p>
     <p>Looking to take on oil-rig, get your full metal set and AK here.</p>
     <hr class="w-75 mx-auto my-5">
-    <div class="row w-75 mx-auto">
+    <div class="row w-75 mx-auto justify-content-center">
         <!-- Icons and statements -->
-        <div class="col-12 col-md-4 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
             <i class="fas fa-globe-europe fa-8x rust"></i>
             <p class="icon-heading">Global shipping available</p>
             <p>With the help of shipping partners, we are proud to offer delivery anywhere in the world, but slowly.</p>
         </div>
-        <div class="col-12 col-md-4 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
             <i class="fas fa-check-square fa-8x rust"></i>
             <p class="icon-heading">All products guaranteed</p>
             <p>Our merchandise has been stress tested by seasoned players, ready to be transferred over to you.</p>
         </div>
-        <div class="col-12 col-md-4 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
             <i class="fas fa-dollar-sign fa-8x rust"></i>
             <p class="icon-heading">Cheapest place for items</p>
             <p>Using the fastest progression path, we can offer these items at a fraction of the price our competitors
@@ -36,9 +36,9 @@
     <!-- Featured Categories -->
     <hr class="w-75 mx-auto mb-5">
     <h2 class="mb-5">Featured Categories</h2>
-    <div class="row w-75 mx-auto mb-5">
+    <div class="row w-75 mx-auto mb-3 justify-content-center">
             {% for feature in featured %}
-            <div class="col-12 col-md-4 pb-3">
+            <div class="col-12 col-sm-6 col-md-4 pb-3">
                 <a href="{% url 'products:category' feature.category.slug %}">
                     <div class="category py-3">
                         <img src="{{ feature.mainimage.url }}" alt="Random image from {{ feature.category.title }} collection">
