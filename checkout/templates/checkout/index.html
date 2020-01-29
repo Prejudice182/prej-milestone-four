@@ -7,7 +7,7 @@
 <div class="container">
     <h1 class="my-5">Checkout</h1>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-12 col-md-6 order-2 order-md-1">
             {% if saved_address %}
             <h3 class="rust">Saved Address</h3>
             <div class="card mb-5">
@@ -24,7 +24,7 @@
                     {% if saved_address.postcode %}
                     <p><b>Postcode:</b> {{ saved_address.postcode }}</p>
                     {% endif %}
-                    <a href="{% url 'checkout:payment' %}" class="btn rust-button float-right">Proceed to Checkout with saved address</a>
+                    <a href="{% url 'checkout:payment' %}" class="btn rust-button float-right">Proceed to Checkout</a>
                 </div>
             </div>
             {% endif %}
@@ -38,13 +38,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-12 col-md-6 order-1 order-md-2">
             <h3>&nbsp;</h3>
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header font-weight-bold">Order Items</div>
                 <div class="card-body">
                     {% for item in cart_items %}
-                    {{ item.quantity }} x {{ item.product.name }} - {{ item.get_total }}<br />
+                    {{ item.quantity }} x {{ item.product.name }} <span class="float-right">€{{ item.get_total }}</span><br />
                     {% endfor %}
                 </div>
                 <div class="card-footer">

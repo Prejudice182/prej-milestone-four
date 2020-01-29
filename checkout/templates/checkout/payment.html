@@ -7,7 +7,43 @@
 {% block content %}
 <div class="container">
     <h1 class="my-5">Pay with Stripe</h1>
-    <button class="btn rust-button" id="payNow">Pay Now With Stripe</button>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3 class="rust">Saved Address</h3>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <p><b>Address Line 1:</b> {{ saved_address.street_address1 }}</p>
+                    {% if saved_address.street_address2 %}
+                    <p><b>Address Line 2:</b> {{ saved_address.street_address2 }}</p>
+                    {% endif %}
+                    <p><b>Town / City:</b> {{ saved_address.town_or_city }}</p>
+                    {% if saved_address.county_or_state %}
+                    <p><b>County / State:</b> {{ saved_address.county_or_state }}</p>
+                    {% endif %}
+                    <p><b>Country:</b> {{ saved_address.country }}</p>
+                    {% if saved_address.postcode %}
+                    <p><b>Postcode:</b> {{ saved_address.postcode }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="rust">Cart Contents</h3>
+            <div class="card mb-5">
+                <div class="card-header font-weight-bold">Order Items</div>
+                <div class="card-body">
+                    {% for item in cart_items %}
+                    {{ item.quantity }} x {{ item.product.name }} <span class="float-right">€{{ item.get_total }}</span><br />
+                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                    <span class="font-weight-bold">Order Total</span>
+                    <span class="float-right">€{{ cart_total }}</span>
+                </div>
+            </div>
+        </div>
+        <button class="btn rust-button mb-3 mx-auto" id="payNow">Pay Now With Stripe</button>
+    </div>
 </div>
 {% endblock %}
 

@@ -48,6 +48,7 @@ def payment(request):
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
     cart = cart_qs.first()
     cart_items = cart.items.all()
+    cart_total = cart.get_total()
 
     line_items = []
     for item in cart_items:
@@ -66,7 +67,12 @@ def payment(request):
         cancel_url=settings.STRIPE_CANCEL_URL
     )
 
+    saved_address = BillingAddress.objects.filter(user=request.user).first()
+
     context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+        'saved_address': saved_address,
         'session_id': session.id
     }
 
@@ -95,35 +101,6 @@ def confirm(request, session_id):
         return render(request, 'checkout/confirm.html', context)
     else:
         pass
-
-# def charge(request):
-#     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
-#     cart = cart_qs.first()
-
-#     cart_items = cart.items.all()
-#     cart_total = cart.get_total()
-#     total = int(cart_total * 100)
-
-#     if request.method == 'POST':
-#         charge = stripe.Charge.create(amount=total, currency='eur', description=cart, source=request.POST['stripeToken'])
-        
-#         if charge.status == 'succeeded':
-#             order_id = get_random_string(length=16)
-#             order = Order.objects.create(user=request.user, total=cart_total, payment_id=charge.id, order_id=f'#{request.user}{order_id}')
-#             print(order)
-#             for item in cart_items:
-#                 order.order_items.add(item)
-#                 print(item)
-#             order.save()
-#             cart.ordered = True
-#             cart.save()
-
-#         context = {
-#             'items': order.order_items,
-#             'order': order
-#         }
-
-#         return render(request, 'checkout/charge.html', context)
 
 def all_orders(request):
     try:
