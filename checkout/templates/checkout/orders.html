@@ -31,6 +31,10 @@
                                 </td>
                                 <td><span class="badge badge-primary">Processing Your Order</span></td>
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <td class="text-center" colspan="4">No orders found!</td>
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
