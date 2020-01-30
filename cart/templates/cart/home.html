@@ -12,45 +12,50 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col" class="text-left d-none d-sm-table-cell">Image</th>
-                    <th scope="col">Product Name</th>
+                    <th scope="col" class="d-none d-sm-table-cell">Image</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
+                    <th scope="col">X</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Cart Items -->
                 {% for cart_item in cart_items %}
                 <tr>
                     <th scope="row" class="align-middle">{{ forloop.counter }}</th>
                     <td scope="row" class="w-25 align-middle d-none d-sm-table-cell">
-                        <div class="cart-img-wrapper item-img">
+                        <div class="cart-img-wrapper item-img mx-auto">
                             <img class="img-fluid" src="{{ cart_item.product.mainimage.url }}"
                                 alt="Stock image for {{ cart_item.product.name }}">
                         </div>
                     </td>
                     <td class="align-middle">{{ cart_item.product.name }}</td>
                     <td class="align-middle">
-                        <a href="{% url 'cart:decrease' cart_item.product.slug %}"><span
-                                class="badge badge-light"><i class="fas fa-minus"></i></span></a>
+                        <a href="{% url 'cart:decrease' cart_item.product.slug %}"><span class="badge badge-light"><i
+                                    class="fas fa-minus"></i></span></a>
                         {{ cart_item.quantity }}
-                        <a href="{% url 'cart:add' cart_item.product.slug %}"><span
-                                class="badge badge-light"><i class="fas fa-plus"></i></span></a>
+                        <a href="{% url 'cart:add' cart_item.product.slug %}"><span class="badge badge-light"><i
+                                    class="fas fa-plus"></i></span></a>
                     </td>
-                    <td class="align-middle position-relative">
+                    <td class="align-middle">
                         €{{ cart_item.get_total }}
-                        <a class="btn remove-button" href="{% url 'cart:remove' cart_item.product.slug %}">
-                            <span class="fa-layers fa-fw fa-lg">
-                                <i class="fas fa-circle"></i>
-                                <i class="fa-inverse fas fa-times" data-fa-transform="shrink-6"></i>
-                            </span>
-                        </a>
+                    </td>
+                    <td class="align-middle">
+                        <div class="remove">
+                            <a class="btn remove-button" href="{% url 'cart:remove' cart_item.product.slug %}">
+                                <span class="fa-layers fa-fw fa-lg">
+                                    <i class="fas fa-circle"></i>
+                                    <i class="fa-inverse fas fa-times" data-fa-transform="shrink-6"></i>
+                                </span>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 {% endfor %}
                 <tr>
-                    <th scope="row"></th>
-                    <td colspan="2" class="text-left align-middle"><h2 class="rust">Total</h2></td>
+                    <td colspan="4" class="text-left align-middle">
+                        <h2 class="rust">Total</h2>
+                    </td>
                     <td class="d-none d-sm-table-cell"></td>
                     <td class="align-middle">€{{ cart.get_total }}</td>
                 </tr>
