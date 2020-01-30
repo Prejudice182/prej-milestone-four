@@ -19,11 +19,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Display list of orders for current user -->
                             {% for order in orders %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td class="rust">{{ order.order_id }}</td>
                                 <td>
+                                    <!-- List items found in each order -->
                                     {% for item in order.items.all %}
                                     {{ item }}
                                     <br>
@@ -32,6 +34,7 @@
                                 <td><span class="badge badge-primary">Processing Your Order</span></td>
                             </tr>
                             {% empty %}
+                            <!-- No orders found -->
                             <tr>
                                 <td class="text-center" colspan="4">No orders found!</td>
                             </tr>
