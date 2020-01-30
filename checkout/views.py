@@ -95,7 +95,7 @@ def confirm(request, session_id):
         cart.ordered = True
         cart.save()
         context = {
-            'items': order.order_items,
+            'items': order.items,
             'order': order
         }
         return render(request, 'checkout/confirm.html', context)
