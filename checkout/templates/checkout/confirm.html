@@ -6,6 +6,7 @@
 <div class="container mt-5 text-center">
     <h2>Thank you for your order!</h2>
     <p>Your order will be shipped to:</p>
+    <!-- Card to display users shipping address -->
     <div class="card mb-5">
         <div class="card-body">
             <p><b>Address Line 1:</b> {{ saved_address.street_address1 }}</p>
@@ -22,6 +23,6 @@
             {% endif %}
         </div>
     </div>
-    <a href="{% url 'checkout:all_orders' %}">My Orders</a>
+    <a class="btn rust-button" href="{% url 'checkout:all_orders' %}">My Orders</a>
 </div>
 {% endblock%}

@@ -8,6 +8,9 @@ User = get_user_model()
 
 
 class BillingAddress(models.Model):
+    '''
+    Billing Address model, with foreign key to User
+    '''
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     street_address1 = models.CharField(
         max_length=200, verbose_name='Address Line 1')
@@ -27,6 +30,9 @@ class BillingAddress(models.Model):
 
 
 class OrderItem(models.Model):
+    '''
+    Order Item model, with foreign keys to an order, and a product
+    '''
     order = models.ForeignKey(
         'Order', on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -38,6 +44,9 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
+    '''
+    Order model, with a foreign key to a user
+    '''
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)

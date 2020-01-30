@@ -6,6 +6,9 @@ from .models import BillingAddress
 
 
 class BillingForm(ModelForm):
+    '''
+    Form used for user billing address, displayed using Crispy Forms helpers
+    '''
     class Meta:
         model = BillingAddress
         fields = ['street_address1', 'street_address2',

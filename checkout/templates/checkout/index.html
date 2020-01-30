@@ -8,6 +8,7 @@
     <h1 class="my-5">Checkout</h1>
     <div class="row">
         <div class="col-12 col-md-6 order-2 order-md-1">
+            <!-- If user has a saved address display first -->
             {% if saved_address %}
             <h3 class="rust">Saved Address</h3>
             <div class="card mb-5">
@@ -28,6 +29,7 @@
                 </div>
             </div>
             {% endif %}
+            <!-- Display form to add a new address -->
             <h3 class="rust">New Address</h3>
             <div class="card mb-5">
                 <div class="card-body">
@@ -38,6 +40,7 @@
                 </div>
             </div>
         </div>
+        <!-- Cart items, reordered on smaller devices -->
         <div class="col-12 col-md-6 order-1 order-md-2">
             <h3>&nbsp;</h3>
             <div class="card mb-5">

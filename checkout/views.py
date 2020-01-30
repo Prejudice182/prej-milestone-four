@@ -12,6 +12,10 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 def checkout(request):
+    '''
+    View to display the initial checkout page, asking user for billing address
+    or using a saved one if available
+    '''
     form = BillingForm
 
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
@@ -46,6 +50,10 @@ def checkout(request):
 
 
 def payment(request):
+    '''
+    View called on validation of address, used to verify details are correct,
+    before continuing to Stripe for payment
+    '''
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
     cart = cart_qs.first()
     cart_items = cart.items.all()
@@ -81,6 +89,10 @@ def payment(request):
 
 
 def confirm(request, session_id):
+    '''
+    View called after Stripe returns to site, making sure a valid
+    session is provided, if not, redirect to home
+    '''
     try:
         session = stripe.checkout.Session.retrieve(session_id)
     except:
@@ -111,6 +123,9 @@ def confirm(request, session_id):
 
 
 def all_orders(request):
+    '''
+    View to display all of a users successful orders
+    '''
     try:
         orders = Order.objects.filter(user=request.user)
         context = {

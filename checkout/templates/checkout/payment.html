@@ -9,6 +9,7 @@
     <h1 class="my-5">Pay with Stripe</h1>
     <div class="row">
         <div class="col-12 col-md-6">
+            <!-- Users chosen address -->
             <h3 class="rust">Saved Address</h3>
             <div class="card mb-5">
                 <div class="card-body">
@@ -28,6 +29,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6">
+            <!-- Users cart contents -->
             <h3 class="rust">Cart Contents</h3>
             <div class="card mb-5">
                 <div class="card-header font-weight-bold">Order Items</div>
@@ -42,12 +44,15 @@
                 </div>
             </div>
         </div>
+        <!-- Button to call Stripe's built in checkout -->
         <button class="btn rust-button mb-3 mx-auto" id="payNow">Pay Now With Stripe</button>
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
+<!-- Session Id outputted to template as JSON -->
 {{ session_id | json_script:'session-data'}}
+<!-- Javascript to call Stripe function -->
 <script src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
