@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.detail import SingleObjectMixin
 from .forms import QuantitySelectForm, OrderByForm
@@ -29,7 +29,6 @@ class Home(ListView):
     def get(self, request, *args, **kwargs):
         order_key = self.request.GET.get('order', DEFAULT_ORDER)
         self.order = VALID_ORDERS.get(order_key, DEFAULT_ORDER)
-        self.query = self.request.GET.get('q')
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -77,6 +76,16 @@ class ProductDetailView(DetailView):
         return context
 
 class SearchResultsView(Home):
+    '''
+    Search Results View, redirecting back to previous page if query is blank
+    '''
+    def get(self, request, *args, **kwargs):
+        if self.request.GET.get('q') != '':
+            self.query = self.request.GET.get('q')
+            return super().get(request, *args, **kwargs)
+        else:
+            return redirect(request.META['HTTP_REFERER'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['q'] = self.query
