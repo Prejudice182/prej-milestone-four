@@ -26,6 +26,9 @@
                     {% endfor %}
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'news:home' %}">News</a>
+            </li>
             <!-- Show admin page link for ease of access -->
             {% if user.is_superuser %}
             <li class="nav-item">
@@ -41,6 +44,10 @@
                     <i class="fa fa-shopping-cart"></i> Cart
                     <span class="badge rust-button">{{ user | cart_total }}</span>
                 </a>
+            </li>
+            <!-- Previous Orders -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'checkout:all_orders' %}">My Orders</a>
             </li>
             <!-- Logout -->
             <li class="nav-item">
