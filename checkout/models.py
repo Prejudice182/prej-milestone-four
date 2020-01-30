@@ -34,7 +34,7 @@ class OrderItem(models.Model):
     quantity = models.PositiveSmallIntegerField(default=1)
 
     def __str__(self):
-        return f'{self.quantity} of {self.product.name}'
+        return f'{self.quantity} x {self.product.name}'
 
 
 class Order(models.Model):
