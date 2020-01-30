@@ -35,7 +35,7 @@ class Cart(models.Model):
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.pk}' if self.pk else '(unsaved)'
+        return f'{self.customer.username} - {self.ordered}'
 
     def get_total(self):
         total = 0
