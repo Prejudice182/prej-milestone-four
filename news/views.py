@@ -8,6 +8,9 @@ from .models import Article
 
 
 class NewsHomeView(ListView):
+    '''
+    Get all articles, order by last updated descending, paginate 10 per page
+    '''
     paginate_by = 10
     template_name = 'news/index.html'
     queryset = Article.objects.all().order_by('-updated')
@@ -15,6 +18,9 @@ class NewsHomeView(ListView):
 
 
 class NewsCreateView(LoginRequiredMixin, CreateView):
+    '''
+    Create an article, user must be logged in to do so
+    '''
     model = Article
     fields = ['headline', 'tag_line', 'banner_image', 'content']
     template_name = 'news/create.html'
@@ -24,6 +30,9 @@ class NewsCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class NewsDetailView(DetailView):
+    '''
+    View more details about an article
+    '''
     model = Article
     template_name = 'news/details.html'
     context_object_name = 'article'

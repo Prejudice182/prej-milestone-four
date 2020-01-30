@@ -5,10 +5,12 @@
 
 {% block content %}
 <div class="container">
+    <!-- Detailed view of article -->
     <h1 class="my-5">News Article</h1>
     <h2 class="rust">{{ article.headline }}</h3>
     <p class="lead">{{ article.tag_line }}</p>
     <p>{{ article.content | linebreaks }}</p>
+    <!-- Return back to list of articles -->
     <a href="{% url 'news:home' %}" class="btn rust-button mb-5">Back to Articles</a>
 </div>
 {% endblock %}

@@ -6,6 +6,9 @@ User = get_user_model()
 
 # Create your models here.
 class Article(models.Model):
+    '''
+    Article model, with a foreign key to a user as the author
+    '''
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     headline = models.CharField(max_length=100)
     tag_line = models.CharField(max_length=100)
