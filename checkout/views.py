@@ -44,6 +44,7 @@ def checkout(request):
 
     return render(request, 'checkout/index.html', context)
 
+
 def payment(request):
     cart_qs = Cart.objects.filter(customer=request.user, ordered=False)
     cart = cart_qs.first()
@@ -78,29 +79,36 @@ def payment(request):
 
     return render(request, 'checkout/payment.html', context)
 
-def confirm(request, session_id):
-    session = stripe.checkout.Session.retrieve(session_id)
 
-    if session.customer:
-        cart = Cart.objects.filter(customer=request.user, ordered=False).first()
+def confirm(request, session_id):
+    try:
+        session = stripe.checkout.Session.retrieve(session_id)
+    except:
+        return redirect('home')
+    else:
+        cart = Cart.objects.filter(
+            customer=request.user, ordered=False).first()
         cart_items = cart.items.all()
-        print(cart_items)
         total = int(cart.get_total() * 100)
 
         order_id = get_random_string(length=16)
-        order = Order.objects.create(user=request.user, total=total, payment_id=session.payment_intent, order_id=f'#{request.user}{order_id}')
+        order = Order.objects.create(
+            user=request.user, total=total, payment_id=session.payment_intent, order_id=f'#{request.user}{order_id}')
+        saved_address = BillingAddress.objects.filter(
+            user=request.user).first()
         for item in cart_items:
-            OrderItem.objects.create(order=order, product=item.product, quantity=item.quantity)
+            OrderItem.objects.create(
+                order=order, product=item.product, quantity=item.quantity)
         order.save()
         cart.ordered = True
         cart.save()
         context = {
+            'saved_address': saved_address,
             'items': order.items,
             'order': order
         }
         return render(request, 'checkout/confirm.html', context)
-    else:
-        pass
+
 
 def all_orders(request):
     try:
