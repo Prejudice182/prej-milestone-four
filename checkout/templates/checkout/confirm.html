@@ -5,6 +5,23 @@
 {% block content %}
 <div class="container mt-5 text-center">
     <h2>Thank you for your order!</h2>
+    <p>Your order will be shipped to:</p>
+    <div class="card mb-5">
+        <div class="card-body">
+            <p><b>Address Line 1:</b> {{ saved_address.street_address1 }}</p>
+            {% if saved_address.street_address2 %}
+            <p><b>Address Line 2:</b> {{ saved_address.street_address2 }}</p>
+            {% endif %}
+            <p><b>Town / City:</b> {{ saved_address.town_or_city }}</p>
+            {% if saved_address.county_or_state %}
+            <p><b>County / State:</b> {{ saved_address.county_or_state }}</p>
+            {% endif %}
+            <p><b>Country:</b> {{ saved_address.country }}</p>
+            {% if saved_address.postcode %}
+            <p><b>Postcode:</b> {{ saved_address.postcode }}</p>
+            {% endif %}
+        </div>
+    </div>
     <a href="{% url 'checkout:all_orders' %}">My Orders</a>
 </div>
 {% endblock%}
