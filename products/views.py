@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.detail import SingleObjectMixin
@@ -28,6 +29,7 @@ class Home(ListView):
     def get(self, request, *args, **kwargs):
         order_key = self.request.GET.get('order', DEFAULT_ORDER)
         self.order = VALID_ORDERS.get(order_key, DEFAULT_ORDER)
+        self.query = self.request.GET.get('q')
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -73,3 +75,16 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['form'] = QuantitySelectForm()
         return context
+
+class SearchResultsView(Home):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.query
+        context['category'] = 'Search Results'
+        return context
+    
+    def get_queryset(self):
+        object_list = Product.objects.filter(
+            Q(name__icontains=self.query) | Q(category__title__icontains=self.query)
+        )
+        return object_list
