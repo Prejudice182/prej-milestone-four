@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}News{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-3">News</h1>
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-12">
+            <h3 class="rust">{{ article.headline }}</h3>
+            <p class="lead">{{ article.tag_line }}</p>
+            <p>{{ article.content | linebreaks | truncatewords:100 }}</p>
+            <a href="#" class="btn rust-button">Read More</a>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Display pagination links if needed -->
+    {% if is_paginated %}
+    {% include 'pagination.html' %}
+    {% endif %}
+</div>
+{% endblock %}
