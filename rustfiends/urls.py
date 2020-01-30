@@ -29,6 +29,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('pages/', include('pages.urls', namespace='pages')),
+    path('news/', include('news.urls', namespace='news')),
 ]
 
 # Add media and static local serving during debug mode only
