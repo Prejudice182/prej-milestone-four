@@ -18,10 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
+from django.views.decorators.clickjacking import xframe_options_exempt
 from pages.views import HomeView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    # X-Frame-Options exempt to test responsiveness via ami.responsivedesign.is
+    path('', xframe_options_exempt(HomeView.as_view()), name='home'), 
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
