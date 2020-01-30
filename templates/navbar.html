@@ -69,8 +69,8 @@
         </ul>
         {% endif %}
         <!-- Search bar (NYI) -->
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'products:search' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" {% if q %}value="{{ q }}"{% endif %}>
             <button class="btn rust-button-outline my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
