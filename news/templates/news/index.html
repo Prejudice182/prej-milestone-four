@@ -11,7 +11,7 @@
             <h3 class="rust">{{ article.headline }}</h3>
             <p class="lead">{{ article.tag_line }}</p>
             <p>{{ article.content | linebreaks | truncatewords:100 }}</p>
-            <a href="#" class="btn rust-button">Read More</a>
+            <a href="{% url 'news:details' article.id %}" class="btn rust-button">Read More</a>
             <hr>
         </div>
         {% endfor %}
