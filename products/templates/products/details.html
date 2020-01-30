@@ -7,12 +7,26 @@
 <div class="container">
     <h1 class="mt-5 mb-3">{{ product.name }}</h1>
     <div class="row">
-        <!-- Image and description section -->
+        <!-- Image section -->
         <div class="col-12 col-md-8">
             <div class="detail-img text-center">
                 <img class="w-50 mx-auto" src="{{ product.mainimage.url }}"
                     alt="Main image of {{ product.mainimage.url }}">
             </div>
+        </div>
+        <!-- Price and quantity section -->
+        <div class="col-12 col-md-4 my-3">
+            <div class="price-wrapper">
+                €{{ product.price }}
+            </div>
+            <form action="{% url 'cart:add' product.slug %}" method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button class="btn rust-button" type="submit">Add to Cart</button>
+            </form>
+        </div>
+        <!-- Description section -->
+        <div class="col-12 col-md-8">
             <div class="product-details pt-3">
                 <h3 class="rust">Description</h3>
                 <p>{{ product.detail_text }}</p>
@@ -28,17 +42,7 @@
             </div>
             <hr>
         </div>
-        <!-- Price and quantity section -->
-        <div class="col-12 col-md-4">
-            <div class="price-wrapper">
-                €{{ product.price }}
-            </div>
-            <form action="{% url 'cart:add' product.slug %}" method="post">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <button class="btn rust-button" type="submit">Add to Cart</button>
-            </form>
-        </div>
+        
     </div>
 </div>
 {% endblock %}
