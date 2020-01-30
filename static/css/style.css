@@ -6,7 +6,7 @@
 
 body,
 p,
-span,
+span:not(.badge),
 label {
     font-family: 'Open Sans', sans-serif;
 }
