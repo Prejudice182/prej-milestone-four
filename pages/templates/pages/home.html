@@ -37,22 +37,22 @@
     <hr class="w-75 mx-auto mb-5">
     <h2 class="mb-5">Featured Categories</h2>
     <div class="row w-75 mx-auto mb-3 justify-content-center">
-            {% for feature in featured %}
-            <div class="col-12 col-sm-6 col-md-4 pb-3">
-                <a href="{% url 'products:category' feature.category.slug %}">
-                    <div class="category py-3">
-                        <img src="{{ feature.mainimage.url }}" alt="Random image from {{ feature.category.title }} collection">
-                        <div class="category-heading">
-                            <h4 class="mt-2">{{ feature.category.title }}</h4>
-                        </div>
+        {% for feature in featured %}
+        <div class="col-12 col-sm-6 col-md-4 pb-3">
+            <a href="{% url 'products:category' feature.category.slug %}">
+                <div class="category py-3">
+                    <img src="{{ feature.mainimage.url }}"
+                        alt="Random image from {{ feature.category.title }} collection">
+                    <div class="category-heading">
+                        <h4 class="mt-2">{{ feature.category.title }}</h4>
                     </div>
-                </a>
-            </div>
-            {% empty %}
-            <p>No featured categories at the moment!</p>
-            <p>Please check back later...</p>
-            {% endfor %}
+                </div>
+            </a>
         </div>
+        {% empty %}
+        <p>No featured categories at the moment!</p>
+        <p>Please check back later...</p>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
