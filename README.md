@@ -264,6 +264,30 @@ This model is essentially a copy of CartItem, with the Cart foreign key switched
 
 ## Testing
 
+### Validation
+
+- W3C Markup Validation was used to validate HTML
+- W3C CSS Validation was used to validate CSS
+- JSHint was used to valid Javascript
+
+### Automated Testing
+
+Due to the small of amount of custom javascript, I opted not to perform any automated testing on it
+
+Due to time constraints, I ran out of time to add more significant tests to my Django files. However the few I did make, all pass with no issues.
+They can be run by the following command:
+```
+python manage.py test
+```
+
+### Travis
+
+I used the continuous integration service, Travis, to provide support for the deployed site. Once code passes CI, it will then be pushed up to Heroku.
+
+### Manual Testing
+
+I opened the project in Chrome and Firefox, and for mobile devices, I used an Android phone and tablet. I confirmed the site works correctly on all sizes and devices.
+
 ## Deployment
 
 ### Local
