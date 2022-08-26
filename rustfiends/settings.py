@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+from unittest.mock import DEFAULT
 from django.contrib.messages import constants as messages
 import os
 import dj_database_url
@@ -189,3 +190,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
