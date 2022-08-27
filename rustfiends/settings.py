@@ -192,11 +192,3 @@ MESSAGE_TAGS = {
 }
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
-
-# Try to import django-heroku depending on Travis or Heroku
-try:
-    # Configure Django App for Heroku.
-    import django_heroku
-    django_heroku.settings(locals())
-except ImportError:
-    found = False
