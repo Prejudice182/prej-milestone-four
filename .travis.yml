@@ -4,13 +4,3 @@ python:
 install: pip install -r requirements.txt
 script:
 - python manage.py test
-before_deploy:
-- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
-deploy:
-  provider: heroku
-  app: rustfiends
-  run:
-  - python manage.py migrate
-  api_key:
-    secure: HL1YQBoT6KGaKRtEReYoQIm3cLgBDGEjwwN25KdubKVB/CzRc4ib3hqNinSxwiqk0+wXpfuWmMcMz0deCYcW0vwaxf3Radp2QNnall3BrfwZ14/4PjXRmlmeDaTWTVjU4YKGSSLpo+WzON1Q74w+sOihj7oxeHxGKyVc8l+j64AKhPlSqhV91eL8UGPFplPdk5E/cVLDWu5hNrCesR+Z961eanVTy56r0TrmBq8wx6G9eQH5rMGJb5Xo0vV1/QglTMyNKDLcK2ZihNpyOqXMrueNsKi9r4IkYdP4orFxM4BFgD4xLIE4kxYVgApaK4QogRJGqYBzf8nlzU8sE6/ijs9WRy6Z1V7BAdYxo5n8fmhMKIQW1MpyBQywCVij1Sf7I2RDrx25LepRHsKU9Cbu2oadPYKEsR3e9AZHbcy+QLBEyDWNElLaIobVLunIHn1K+K+pZAPZLRdisSd/HzZpviwN/BDgvSjURApcv7YRPkE3RoWxltV5fdTd6KYk0JLADvhuxK2X/NX9a7EDi+Vmj+dwld3+II7AIfcC5anQ1ByHZnracVU/PXTOFPGOPcGPiLfjxnA+P0dxRVCbHv3uTVNPNm9m3GzNWgKK+dDPAGZpBkw2WqO92UFM2hLyFFxOnmZLcMS1P98GEttHPzlex+0jExYVca9Jvbp8TuKifdw=
-  skip_cleanup: true
