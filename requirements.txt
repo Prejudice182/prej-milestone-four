@@ -6,7 +6,7 @@ botocore
 certifi
 chardet
 dj-database-url
-Django==4.0
+Django==4.0.7
 django-crispy-forms
 django-storages
 docutils
