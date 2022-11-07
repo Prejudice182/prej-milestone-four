@@ -8,7 +8,7 @@ This e-commerce site was designed as my submission for my final milestone projec
 
 Rust is a survival game, that allows players to go against one another in an open world scenario. Players spawn on a beach with nothing but a rock and torch to start them on their journey. Using these tools, players must farm for resources in order to craft tools, build bases and fight against other players.
 
-A live version can be found deployed on Heroku [here.](https://rustfiends.herokuapp.com)
+A live version can be found deployed on ~~Heroku [here.](https://rustfiends.herokuapp.com)~~ Render [here.](https://rustfiends.onrender.com/)
 
 ## UX
 
@@ -139,7 +139,7 @@ I mocked up some wireframes for a desktop-first layout using Balsamiq
 ### Database Choice
 
 - Django uses an ORM layer for working with SQL databases. Locally, an sqlite3 database was used during development
-- On deployment, Heroku doesn't support sqlite3 so a PostgreSQL database was provisioned
+- On deployment, Render doesn't support sqlite3 so a PostgreSQL database was provisioned
 
 ### Models
 
@@ -251,7 +251,9 @@ This model is essentially a copy of CartItem, with the Cart foreign key switched
   - Version Control, used to store each developmental change
 - [Amazon AWS](https://aws.amazon.com)
   - Cloud Storage used to host images and static files
-- [Heroku](https://www.heroku.com/)
+- ~~[Heroku](https://www.heroku.com/)
+  - ~~Platform as a Service, used to host our deployed project
+- [Render](https://www.render.com/)
   - Platform as a Service, used to host our deployed project
 - [Bootstrap](https://getbootstrap.com/)
   - CSS Framework used to help style project
