@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = [
-    'rustfiends.herokuapp.com',
+    'rustfiends.onrender.com',
     '127.0.0.1',
 ]
 
