@@ -62,9 +62,13 @@ def payment(request):
     line_items = []
     for item in cart_items:
         item_dict = {
-            'name': item.product.name,
-            'amount': int(item.product.price * 100),
-            'currency': 'eur',
+            'price_data': {
+                'product_data': {
+                    'name': item.product.name,
+                },
+                'unit_amount': int(item.product.price * 100),
+                'currency': 'eur',
+            },
             'quantity': item.quantity,
         }
         line_items.append(item_dict)
@@ -72,6 +76,7 @@ def payment(request):
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=line_items,
+        mode='payment',
         success_url=settings.STRIPE_SUCCESS_URL,
         cancel_url=settings.STRIPE_CANCEL_URL
     )
